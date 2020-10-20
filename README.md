@@ -19,6 +19,10 @@ The purpose of thie repo will be to:
 1. Capture a config file that can be imported to do the bulk of configuration
 2. Lay out what manual steps will need to be taken in order to wrap things up
 
+*****Firewall config file: https://github.com/chairforce2/PANOS-Azure-Config-GP  *******
+-this config is on PAN-OS 9.1.4
+base image from Azure/AWS may not be the same, I don't know if that means this config will cause it to download and install or what, honestly. haven't tried yet
+
 So after the deploy referenced above is complete, import the firewall config, make the changes below, then commit. certain steps.
 
 
