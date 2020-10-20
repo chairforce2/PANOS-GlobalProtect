@@ -48,18 +48,7 @@ a. now much of this can be handled in the setup process or embedded in the confi
 
 4. Depending on your Cloud provider you may have to either NAT things on the internal subnet going through the firewall, or just change the route table of the untrust subnet so every packet bound for an up in the rust subnet is sent to the untrust interface of the firewall, which then looks it up in its table and sends it on. For the purposes of this configuration, this is not in scope as all I care about is establishing GP for testing resources on the internet.
 
-5. You will need to deploy certs for the GP portal/gateway as well. These can be signed by the same root CA you already created on your device, but now we are just going to have them be mapped to the IP/DNS Name for the untrust interface GP is deployed on, and they will instead serve the purpose of a VPN Server instead of for HTTPS.
-
-So go back to Keychain assistant, create a new leaf cert, type VPN server, ovverride defaults
-
-In the Certificate Information page, common name should be the ip/dns of the untrust interface
-make sure it is signed by a root CA you trust (probably the same you created earlier)
-
-Extended Key Usage Extension - you can do any, but I always make sure to specifically flag 'ssl server auth' for potal web ui + any initial ssl interactions
-Subject alternative name extension page - again we will put in the IP and/or DNS of the untrust interface
-Now upload it to the firewall (after you export it from keychain access app
-
-From there you will be using it in the normal place of certificates in the GP setup process, such as discussed here: https://docs.paloaltonetworks.com/globalprotect/8-1/globalprotect-admin/globalprotect-quick-configs/remote-access-vpn-authentication-profile.html#idedc68ee0-d39f-4d91-bcae-5409f57c4071
+5. You will need to deploy certs for the GP portal/gateway as well. These can be signed by the same root CA you already created on your device, but now we are just going to have them be mapped to the IP/DNS Name for the untrust interface GP is deployed on, and they will instead serve the purpose of a VPN Server instead of for HTTPS. See https://github.com/chairforce2/panos-and-certificates/blob/main/README.md
 
 
 6. you may need to check and/or edit the NAT policy on the firewall itself (Dynamic IP and port)
