@@ -16,7 +16,8 @@ The purpose of thie repo will be to:
 1. Capture a config file that can be imported to do the bulk of configuration
 2. Lay out what manual steps will need to be taken in order to wrap things up
 
-So after the deploy referenced above is complete, you will import the FW config in this repo, and then proceed with the steps below:
+So after the deploy referenced above is complete, import the firewall config, make the changes below, then commit. certain steps.
+
 
 1. License the VM-Series firewall (if using a BYOL license)
 2. Configure the Management Interface for secure use in accordance with: https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/getting-started/best-practices-for-securing-administrative-access.html
@@ -30,6 +31,15 @@ a. now much of this can be handled in the setup process or embedded in the confi
 -consider if you think it is worth adding certs as an additional layer of authentication for the admin interface
 
 -configure the firewall admin interface for HTTPS by generating certs. If you already have a PKI strategy figured out, phenomenal. If not, I have created some notes here on the matter: https://github.com/chairforce2/panos-and-certificates/blob/main/README.md
+
+
+3. Manipulate the routes on the virtual router
+- you should still have the static 0.0.0.0/0 route our the untrust interface, but you'll have to create your own static route to the trust interface on your dfaut VR
+-for the static route to the internet, make sure you have the right setting for next hop / it actually points to a gateway for the subnet/vpc/vnet
+- this will vary depending on the cloud provider
+- for example, the last time I was trying to deploy on azure I kept having a terrible time because it just seemed like the untrust interface and the internal interface never got a default gateway. I ended up just statically configuring a route in the VR pointing 0.0.0.0/0 to the first IP of my untrust interface's subnet and suddely I could reach the internet.
+
+4. Depending on your Cloud provider you may have to either NAT things on the internal subnet going through the firewall, or just change the route table of the untrust subnet so every packet bound for an up in the rust subnet is sent to the untrust interface of the firewall, which then looks it up in its table and sends it on. For the purposes of this configuration, this is not in scope as all I care about is establishing GP for testing resources on the internet.
 
 
 
