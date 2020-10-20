@@ -62,7 +62,7 @@ Now upload it to the firewall (after you export it from keychain access app
 From there you will be using it in the normal place of certificates in the GP setup process, such as discussed here: https://docs.paloaltonetworks.com/globalprotect/8-1/globalprotect-admin/globalprotect-quick-configs/remote-access-vpn-authentication-profile.html#idedc68ee0-d39f-4d91-bcae-5409f57c4071
 
 
-
+6. you may need to check and/or edit the NAT policy on the firewall itself (Dynamic IP and port)
 
 
 
