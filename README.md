@@ -9,7 +9,7 @@ Or search through one of the Palo Alto Networks affiliated Github pages for a re
 https://github.com/PaloAltoNetworks
 https://github.com/wwce
 
-I recently tested using this one in particular:
+I recently tested using this one in particular, and deployed it in a new resource group, with the BYOL option:
 https://github.com/wwce/azure-arm/tree/master/Azure-Common-Deployments/v1/1fw_3nic_avset
 
 Since are focusing on a single VPC model in this case, you can look to the AWS single VPC deployment guide to understand what steps are being taken end to end.
