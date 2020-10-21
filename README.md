@@ -9,8 +9,8 @@ Or search through one of the Palo Alto Networks affiliated Github pages for a re
 https://github.com/PaloAltoNetworks
 https://github.com/wwce
 
-Or you can use one of my janky templates:
-https://github.com/chairforce2/azure-arm
+I recently tested using this one in particular:
+https://github.com/wwce/azure-arm/tree/master/Azure-Common-Deployments/v1/1fw_3nic_avset
 
 Since are focusing on a single VPC model in this case, you can look to the AWS single VPC deployment guide to understand what steps are being taken end to end.
 https://www.paloaltonetworks.com/resources/guides/aws-deployment-guide-single-resource
