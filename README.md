@@ -53,6 +53,9 @@ a. now much of this can be handled in the setup process or embedded in the confi
 
 6. you may need to check and/or edit the NAT policy on the firewall itself (Dynamic IP and port) -> this should be taken care of in the configs that already have GP configured, but will not for the pre-GP config
 
+7. if you want to do things by DNS, make sure to go to your DNS provider / solution (Godaddy, route53, etc) and make the appropriate changes so that you can resolve the firewall admin interface and/or the GP portal. 
+****bonus of doing this, you can use certs for the DNS hostname such as vpn.mydomain.com instead of individual certs, and then use the DNS records to do DNS based load balancing across >1 VPN interface. I haven't thought through yet how to scale this out for fw administration, since you don't really want to load balance the dns hostnames... so you might just be stuck doing individual certs for the mgmt interface and/or going with panorama
+
 
 
 
