@@ -23,10 +23,8 @@ The purpose of thie repo will be to:
 -this config is on PAN-OS 9.1.4
 base image from Azure/AWS may not be the same, I don't know if that means this config will cause it to download and install or what, honestly. haven't tried yet
 
-So after the deploy referenced above is complete, import the firewall config, make the changes below, then commit. certain steps.
+So after the deploy referenced above is complete, license the firewall (if BYOL), wait for UI restart, import the firewall config, make the changes below (ESPECIALLY FOR THE ADMIN INTERFACE SO YOU CAN LOGIN, then commit.
 
-
-1. License the VM-Series firewall (if using a BYOL license)
 2. Configure the Management Interface for secure use in accordance with: https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/getting-started/best-practices-for-securing-administrative-access.html
 
 a. now much of this can be handled in the setup process or embedded in the config file, but items you should consider carrying out yourself:
