@@ -25,6 +25,8 @@ base image from Azure/AWS may not be the same, I don't know if that means this c
 
 So after the deploy referenced above is complete, license the firewall (if BYOL), wait for UI restart, import the firewall config, make the changes below (ESPECIALLY FOR THE ADMIN INTERFACE SO YOU CAN LOGIN, then commit.
 
+***depending on which named config snapshot you download, you may skip much of the below (NEVER SKIP THE ADMIN INTERFACE CONFIG, ESPECIALLY WHITELISTING IPs TO ACCESS FROM) but if you deploy a config already prepped for GP, then you can probably just download the root CA cert and the GP VPN client certs and trust them / insert them into your local store for use)
+
 2. Configure the Management Interface for secure use in accordance with: https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/getting-started/best-practices-for-securing-administrative-access.html
 
 a. now much of this can be handled in the setup process or embedded in the config file, but items you should consider carrying out yourself:
@@ -49,7 +51,7 @@ a. now much of this can be handled in the setup process or embedded in the confi
 5. You will need to deploy certs for the GP portal/gateway as well. These can be signed by the same root CA you already created on your device, but now we are just going to have them be mapped to the IP/DNS Name for the untrust interface GP is deployed on, and they will instead serve the purpose of a VPN Server instead of for HTTPS. See https://github.com/chairforce2/panos-and-certificates/blob/main/README.md
 
 
-6. you may need to check and/or edit the NAT policy on the firewall itself (Dynamic IP and port)
+6. you may need to check and/or edit the NAT policy on the firewall itself (Dynamic IP and port) -> this should be taken care of in the configs that already have GP configured, but will not for the pre-GP config
 
 
 
